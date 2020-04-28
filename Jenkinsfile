@@ -18,7 +18,8 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          docker.build("simple_api/Dockerfile")
+          
+          docker.build("simple_api:lts","./simple_api")
         }
       }
       }

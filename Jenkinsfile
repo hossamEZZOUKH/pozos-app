@@ -9,18 +9,18 @@ pipeline {
 
   stages {  // Define the individual processes, or stages, of your CI pipeline
     stage('Checkout') { // Checkout (git clone ...) the projects repository //test git-push
-      stage('Building image') {
-      steps{
-        script {
-          docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
-      }
+      
       steps {
         checkout scm
         
       }
     }
-    
+    stage('Building image') {
+      steps{
+        script {
+          docker.build(simple_api/Dockerfile)
+        }
+      }
+      }
 }
 }
